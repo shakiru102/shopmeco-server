@@ -8,12 +8,12 @@ import { authtoken } from "../utils/jsontoken";
  
 export const signupMiddleware = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { password, companyname }: serviceProviderDetails = req.body
+        const { password, email }: serviceProviderDetails = req.body
         const { error } =  providerValidation(req.body)
         if(error) throw new Error(error.details[0].message)
         const hashpass: string = await securedPassword(password)
-        const verifyCompany = await Provider.findOne({ companyname })
-        if(verifyCompany) throw new Error('This company already exists')
+        const verifyEmail = await Provider.findOne({ email })
+        if(verifyEmail) throw new Error('This email already exists')
         const provider = await Provider.create({ ...req.body, password: hashpass })
         const token = authtoken(provider.id)
         // @ts-ignore
