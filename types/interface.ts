@@ -7,9 +7,7 @@ export interface serviceProviderDetails {
     phonenumber?: string;
     service?: string;
     address?: string;
-    companyname: string;
+    companyname?: string;
     date?: number;
     id?: string
-
-
 }
