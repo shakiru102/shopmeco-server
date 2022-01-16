@@ -4,7 +4,7 @@ import { auth } from "../middlewares/auth";
 import { signupMiddleware } from "../middlewares/signupDetails";
 
 const router: IRouter = express.Router()
-    router.post('/provider/signup', signupMiddleware ,signup)
-    router.get('/provider', auth, authProvider)
-    router.post('/provider/login', login)
+    router.post('/user/signup', signupMiddleware ,signup)
+    router.get('/user', auth, authProvider)
+    router.post('/user/login', login)
 export default router

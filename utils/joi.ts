@@ -5,10 +5,10 @@ const serviceProviderSchema = joi.object<serviceProviderDetails>({
      fullname: joi.string().required(),
      email: joi.string().required().email(),
      address: joi.string().required(),
-     companyname: joi.string().required(),
+     companyname: joi.string(),
      password: joi.string().required().min(8),
      phonenumber: joi.string().required(),
-     service: joi.string().required()
+     service: joi.string()
 })
 
 export const providerValidation = ({ 
