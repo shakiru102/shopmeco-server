@@ -6,9 +6,9 @@ import { verifytoken } from "../utils/jsontoken";
 
 export const auth = (req: Request, res: Response, next: NextFunction) => {
   
-    const authHeader: any = req.headers["Authorization"]
     try {
-        const token: string = authHeader.replace('Bearer', '')
+        const token: any = req.header("Authtoken")
+        if(!token) throw new Error ('Authorization does not exist')
         const validToken: JwtPayload =  verifytoken(token)
         if(!validToken) throw new Error('Unauthorized')
         //@ts-ignore
