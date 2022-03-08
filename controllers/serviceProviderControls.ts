@@ -10,8 +10,8 @@ export const signup = async (req: Request, res: Response) => res.send(req.provid
 export const authProvider = async (req: Request, res: Response) => {
             //@ts-ignore
     const provider: serviceProviderDetails = await Provider.findById({_id: req.token.id})
-    const { email, phonenumber, companyname, fullname, service, id } = provider
-    res.status(200).json({ email, phonenumber, companyname, fullname, service, id })
+    const { email, phonenumber, companyname, fullname, service, id, address } = provider
+    res.status(200).json({ email, phonenumber, companyname, fullname, service, id, address })
 }
 
 export const login = async (req: Request, res: Response) => {
